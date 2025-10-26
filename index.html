@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в Госуслуги</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .login-form h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .login-form p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2d7ff9;
+        }
+
+        .login-button {
+            width: 100%;
+            background: #2d7ff9;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background: #1a6dd8;
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links a {
+            color: #2d7ff9;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            margin: 20px 0;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            color: #2e7d32;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div style="font-size: 24px; font-weight: bold; color: #2d7ff9;">Госуслуги</div>
+        </div>
+
+        <div class="login-form">
+            <h1>Вход</h1>
+            <p>Войдите, чтобы получить доступ к сервисам</p>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login">Телефон, СНИЛС или email</label>
+                    <input type="text" id="login" name="login" placeholder="Введите логин" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+                </div>
+
+                <button type="submit" class="login-button">Войти</button>
+            </form>
+
+            <div id="successMessage" class="message">
+                Молодец!
+            </div>
+
+            <div class="links">
+                <a href="#">Забыли пароль?</a>
+                <div class="divider">или</div>
+                <a href="#">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+            
+            if (login && password) {
+                // Показываем сообщение "Молодец!"
+                const message = document.getElementById('successMessage');
+                message.style.display = 'block';
+                
+                // Очищаем форму
+                this.reset();
+                
+                // Скрываем сообщение через 3 секунды
+                setTimeout(() => {
+                    message.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
