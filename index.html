@@ -169,19 +169,10 @@
             
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
-            
-            if (login && password) {
-                // Показываем сообщение "Молодец!"
-                const message = document.getElementById('successMessage');
-                message.style.display = 'block';
                 
                 // Очищаем форму
                 this.reset();
-                
-                // Скрываем сообщение через 3 секунды
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 3000);
+
             }
         });
     </script>
